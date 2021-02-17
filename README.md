@@ -38,4 +38,7 @@ Use ```mvn compile``` for building
 To run with local profile
 ```mvn spring-boot:run -Dspring.profiles.active=local```
 
+#### Postman collection
+Available at folder /postman/LoanApplication.postman_collection.json
+
 [API documentation](http://localhost:8080/swagger-ui.html)
