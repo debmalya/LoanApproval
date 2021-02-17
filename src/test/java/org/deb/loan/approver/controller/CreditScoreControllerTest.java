@@ -28,7 +28,10 @@ class CreditScoreControllerTest {
     CreditRatingRequest createRatingRequest = new CreditRatingRequest("598-07-7771");
     String requestJson = new ObjectMapper().writeValueAsString(createRatingRequest);
     mockMvc
-        .perform(MockMvcRequestBuilders.get("/api/v0/credit/score").content(requestJson))
+        .perform(
+            MockMvcRequestBuilders.get("/api/v0/credit/score")
+                .contentType("application/json")
+                .content(requestJson))
         .andDo(print())
         .andExpect(jsonPath("$.creditRating", greaterThan(299)))
         .andExpect(jsonPath("$.creditRating", lessThan(851)))
