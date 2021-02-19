@@ -20,8 +20,7 @@ class CreditScoreEngineTest {
 
   @Test
   void getCreditScore() {
-    CreditRatingRequest creditRatingRequest = new CreditRatingRequest("198-50-0012");
-    int creditRating = creditRatingService.getCreditScore(creditRatingRequest);
+    int creditRating = creditRatingService.getCreditScore();
     assertTrue(creditRating >= 300 && creditRating <= 850);
   }
 }

@@ -1,6 +1,5 @@
 package org.deb.loan.approver.controller;
 
-import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.deb.loan.approver.dto.CreditRatingRequest;
 import org.deb.loan.approver.service.CreditScoreEngine;
@@ -19,6 +18,6 @@ public class CreditScoreController {
   public ResponseEntity<String> getCreditRating(final CreditRatingRequest creditRatingRequest) {
     return ResponseEntity.ok(
         String.format(
-            "{\"creditRating\":%d}", creditScoreEngine.getCreditScore(creditRatingRequest)));
+            "{\"creditRating\":%d}", creditScoreEngine.getCreditScore()));
   }
 }
