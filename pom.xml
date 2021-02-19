@@ -17,6 +17,7 @@
         <java.version>11</java.version>
         <mockito.version>2.22.0</mockito.version>
         <spotless-plugin.version>2.4.1</spotless-plugin.version>
+        <jacoco-plugin.version>0.8.6</jacoco-plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -152,6 +153,28 @@
                     <execution>
                         <goals>
                             <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-plugin.version}</version>
+                <configuration>
+                    <append>true</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jacoco-initialize</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <goals>
+                            <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
