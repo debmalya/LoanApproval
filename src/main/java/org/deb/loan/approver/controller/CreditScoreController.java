@@ -17,7 +17,6 @@ public class CreditScoreController {
   @GetMapping(value = "/score", produces = "application/json")
   public ResponseEntity<String> getCreditRating(final CreditRatingRequest creditRatingRequest) {
     return ResponseEntity.ok(
-        String.format(
-            "{\"creditRating\":%d}", creditScoreEngine.getCreditScore()));
+        String.format("{\"creditRating\":%d}", creditScoreEngine.getCreditScore()));
   }
 }

@@ -1,16 +1,13 @@
 package org.deb.loan.approver.model;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
 import org.deb.loan.approver.enumeratoin.LoanApprovalStatus;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Data

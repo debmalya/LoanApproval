@@ -1,9 +1,8 @@
 package org.deb.loan.approver.dto;
 
-import lombok.Data;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import lombok.Data;
 
 @Data
 public class LoanApplicationRequest {

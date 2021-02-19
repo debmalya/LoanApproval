@@ -7,18 +7,18 @@
 Example of a weather data JSON object:
 ```json
 {
-   "ssnNumber": "198-50-001",
-   "loanAmount": 99999.99,
-   "currentAnnualIncome": 180000.00
+"ssnNumber": "198-50-001",
+"loanAmount": 99999.99,
+"currentAnnualIncome": 180000.00
 }
 ```
 
 ## Response:
 ```json
 {
-    "loanApprovalStatus": "APPROVED",
-    "approvalAmount": 90000.0,
-    "errorMessage": ""
+	"loanApprovalStatus": "APPROVED",
+	"approvalAmount": 90000.0,
+	"errorMessage": ""
 }
 ````
 
@@ -41,4 +41,11 @@ To run with local profile
 #### Postman collection
 Available at folder /postman/LoanApplication.postman_collection.json
 
-[API documentation](http://localhost:8080/swagger-ui.html)
+#### Linting
+Formatting follow Google Java Format and enforced with ```verify``` phase of maven. To fix reported issues run ```mvn spotless:apply``` can be used.
+
+
+#### Swagger documentation
+Run the application with command
+* ```mvn spring-boot:run```
+* [API documentation](http://localhost:8080/swagger-ui.html)

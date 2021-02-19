@@ -1,9 +1,8 @@
 package org.deb.loan.approver.dto;
 
+import java.util.UUID;
 import lombok.Data;
 import org.deb.loan.approver.enumeratoin.LoanApprovalStatus;
-
-import java.util.UUID;
 
 @Data
 public class LoanApplicationResponse {
