@@ -18,6 +18,7 @@
         <mockito.version>2.22.0</mockito.version>
         <spotless-plugin.version>2.4.1</spotless-plugin.version>
         <jacoco-plugin.version>0.8.6</jacoco-plugin.version>
+        <failsafe-plugin.version>2.22.2</failsafe-plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -175,6 +176,19 @@
                         <id>report</id>
                         <goals>
                             <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${failsafe-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>

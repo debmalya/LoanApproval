@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootTest
-class LoanApproverApplicationTests {
+class LoanApproverApplicationTestsIT {
   @Autowired private ApplicationContext applicationContext;
 
   @Test
