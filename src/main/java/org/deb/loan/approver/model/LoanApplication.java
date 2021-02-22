@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.ToString;
-import org.deb.loan.approver.enumeratoin.LoanApprovalStatus;
+import org.deb.loan.approver.enumeration.LoanApprovalStatus;
 
 @Entity
 @Data

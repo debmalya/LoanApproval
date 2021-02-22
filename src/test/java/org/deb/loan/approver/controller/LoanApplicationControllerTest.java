@@ -2,7 +2,6 @@ package org.deb.loan.approver.controller;
 
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -12,7 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.UUID;
 import org.deb.loan.approver.dto.LoanApplicationRequest;
 import org.deb.loan.approver.dto.LoanApplicationResponse;
-import org.deb.loan.approver.enumeratoin.LoanApprovalStatus;
+import org.deb.loan.approver.enumeration.LoanApprovalStatus;
 import org.deb.loan.approver.service.LoanApplicationService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.UUID;
 import org.deb.loan.approver.dto.LoanApplicationRequest;
 import org.deb.loan.approver.dto.LoanApplicationResponse;
-import org.deb.loan.approver.enumeratoin.LoanApprovalStatus;
+import org.deb.loan.approver.enumeration.LoanApprovalStatus;
 import org.deb.loan.approver.model.LoanApplication;
 import org.deb.loan.approver.repository.LoanApplicationRepository;
 import org.junit.jupiter.api.Test;

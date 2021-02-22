@@ -1,4 +1,4 @@
-package org.deb.loan.approver.enumeratoin;
+package org.deb.loan.approver.enumeration;
 
 public enum LoanApprovalStatus {
   APPROVED("APPROVED"),

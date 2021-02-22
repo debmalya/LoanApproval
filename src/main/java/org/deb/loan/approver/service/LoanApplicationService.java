@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.deb.loan.approver.dto.CreditRatingRequest;
 import org.deb.loan.approver.dto.LoanApplicationRequest;
 import org.deb.loan.approver.dto.LoanApplicationResponse;
-import org.deb.loan.approver.enumeratoin.LoanApprovalStatus;
+import org.deb.loan.approver.enumeration.LoanApprovalStatus;
 import org.deb.loan.approver.model.LoanApplication;
 import org.deb.loan.approver.repository.LoanApplicationRepository;
 import org.springframework.beans.factory.annotation.Value;
