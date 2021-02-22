@@ -1,8 +1,5 @@
 package org.deb.loan.approver.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-
 import java.util.Collections;
 import javax.validation.ConstraintViolationException;
 import lombok.val;
@@ -17,7 +14,6 @@ import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.ServletRequestBindingException;
-
 
 class ExceptionControllerTest {
 
@@ -146,8 +142,8 @@ class ExceptionControllerTest {
 
   @Test
   public void
-  handleMethodArgumentNotValidException_returnBadRequestErrorWithEmptyDefaultErrorMessage()
-      throws NoSuchMethodException {
+      handleMethodArgumentNotValidException_returnBadRequestErrorWithEmptyDefaultErrorMessage()
+          throws NoSuchMethodException {
     BeanPropertyBindingResult errors =
         new BeanPropertyBindingResult(
             BaseError.builder()
@@ -191,5 +187,4 @@ class ExceptionControllerTest {
     Assertions.assertEquals(
         "Missing Path Parameter", response.getBody().getErrors().getError().get(0).getDetails());
   }
-
 }
