@@ -26,6 +26,12 @@ public class ExceptionController {
 
   private static final String appName = "LoanApprover";
 
+  /**
+   * Handle constraint violation in inputs.
+   *
+   * @param ex exception raised when an input causes constraint violation.
+   * @return error response.
+   */
   @ResponseBody
   @ExceptionHandler(ConstraintViolationException.class)
   public ResponseEntity<ErrorResponse> constraintViolationExceptionHandler(

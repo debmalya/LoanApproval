@@ -11,18 +11,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class BaseError {
-    @JsonProperty("Source")
-    private String source;
+  @JsonProperty("Source")
+  private String source;
 
-    @JsonProperty("ReasonCode")
-    private String reasonCode;
+  @JsonProperty("ReasonCode")
+  private String reasonCode;
 
-    @JsonProperty("Description")
-    private String description;
+  @JsonProperty("Description")
+  private String description;
 
-    @JsonProperty("Recoverable")
-    private Boolean recoverable;
+  @JsonProperty("Recoverable")
+  private Boolean recoverable;
 
-    @JsonProperty("Details")
-    private String details;
+  @JsonProperty("Details")
+  private String details;
 }

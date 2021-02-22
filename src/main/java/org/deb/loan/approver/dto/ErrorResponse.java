@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ErrorResponse {
-    @JsonProperty("Errors")
-    private Error errors;
+  @JsonProperty("Errors")
+  private Error errors;
 }
