@@ -34,7 +34,7 @@ class LoanApplicationControllerTest {
   @MockBean private LoanApplicationService loanApplicationService;
 
   @Test
-  void process() throws Exception {
+  void test_success() throws Exception {
     when(loanApplicationService.process(Mockito.any())).thenReturn(mockedLoanApplicationResponse());
 
     LoanApplicationRequest loanApplicationRequest = new LoanApplicationRequest();
@@ -54,6 +54,32 @@ class LoanApplicationControllerTest {
         .andExpect(jsonPath("$.approvalAmount", greaterThanOrEqualTo(0.00)))
         .andExpect(jsonPath("$.message", notNullValue()))
         .andExpect(status().is2xxSuccessful())
+        .andReturn()
+        .getResponse();
+  }
+
+  @Test
+  void test_bad_request() throws Exception {
+    when(loanApplicationService.process(Mockito.any())).thenReturn(mockedLoanApplicationResponse());
+
+    LoanApplicationRequest loanApplicationRequest = new LoanApplicationRequest();
+    loanApplicationRequest.setSsnNumber("018-02-202");
+    loanApplicationRequest.setCurrentAnnualIncome(10000.00);
+    loanApplicationRequest.setLoanAmount(6000.00);
+
+    String requestJson = new ObjectMapper().writeValueAsString(loanApplicationRequest);
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/api/v0/loans/apply")
+                .contentType("application/json")
+                .content(requestJson))
+        .andDo(print())
+        .andExpect(jsonPath("$..Source").value("LoanApprover"))
+        .andExpect(jsonPath("$..ReasonCode").value("400 BAD_REQUEST"))
+        .andExpect(jsonPath("$..Description").value("Bad Request"))
+        .andExpect(jsonPath("$..Details").value("ssnNumber - Please provide proper SSN"))
+        .andExpect(jsonPath("$..Recoverable").value(false))
+        .andExpect(status().is4xxClientError())
         .andReturn()
         .getResponse();
   }
