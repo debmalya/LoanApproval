@@ -16,5 +16,5 @@ import lombok.NoArgsConstructor;
 public class Error {
   @JsonProperty("Error")
   @Valid
-  private List<BaseError> error = new ArrayList<>();
+  private List<BaseError> errorList = new ArrayList<>();
 }

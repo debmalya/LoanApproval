@@ -18,7 +18,7 @@ import org.springframework.web.bind.ServletRequestBindingException;
 class ExceptionControllerTest {
 
   @Test
-  public void constraintViolation_returnBadRequest() {
+  void constraintViolation_returnBadRequest() {
     val exceptionController = new ExceptionController();
     val response =
         exceptionController.constraintViolationExceptionHandler(
@@ -27,15 +27,14 @@ class ExceptionControllerTest {
   }
 
   @Test
-  public void defaultException_returnInternalServerError() {
+  void defaultException_returnInternalServerError() {
     val exceptionController = new ExceptionController();
     val response = exceptionController.defaultExceptionHandler(new NumberFormatException());
     Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
   }
 
   @Test
-  public void handleMethodArgumentNotValidException_returnBadRequestError()
-      throws NoSuchMethodException {
+  void handleMethodArgumentNotValidException_returnBadRequestError() throws NoSuchMethodException {
     BeanPropertyBindingResult errors =
         new BeanPropertyBindingResult(
             BaseError.builder()
@@ -52,11 +51,12 @@ class ExceptionControllerTest {
     val response = exceptionController.handleMethodArgumentNotValidException(ex);
     Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     Assertions.assertEquals(
-        "source - must not be null", response.getBody().getErrors().getError().get(0).getDetails());
+        "source - must not be null",
+        response.getBody().getErrors().getErrorList().get(0).getDetails());
   }
 
   @Test
-  public void handleMethodArgumentNotValidException_returnBadRequestErrorWithEmptyFieldName()
+  void handleMethodArgumentNotValidException_returnBadRequestErrorWithEmptyFieldName()
       throws NoSuchMethodException {
     BeanPropertyBindingResult errors =
         new BeanPropertyBindingResult(
@@ -74,11 +74,11 @@ class ExceptionControllerTest {
     val response = exceptionController.handleMethodArgumentNotValidException(ex);
     Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     Assertions.assertEquals(
-        " - must not be null", response.getBody().getErrors().getError().get(0).getDetails());
+        " - must not be null", response.getBody().getErrors().getErrorList().get(0).getDetails());
   }
 
   @Test
-  public void handleMethodArgumentNotValidException_multipleFieldErrors_success()
+  void handleMethodArgumentNotValidException_multipleFieldErrors_success()
       throws NoSuchMethodException {
     BeanPropertyBindingResult errors =
         new BeanPropertyBindingResult(
@@ -99,7 +99,7 @@ class ExceptionControllerTest {
   }
 
   @Test
-  public void handleMethodArgumentNotValidException_returnBadRequestErrorWithEmptyErrorCodes()
+  void handleMethodArgumentNotValidException_returnBadRequestErrorWithEmptyErrorCodes()
       throws NoSuchMethodException {
     BeanPropertyBindingResult errors =
         new BeanPropertyBindingResult(
@@ -117,11 +117,11 @@ class ExceptionControllerTest {
     val response = exceptionController.handleMethodArgumentNotValidException(ex);
     Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     Assertions.assertEquals(
-        " - must not be null", response.getBody().getErrors().getError().get(0).getDetails());
+        " - must not be null", response.getBody().getErrors().getErrorList().get(0).getDetails());
   }
 
   @Test
-  public void handleMethodArgumentNotValidException_returnBadRequestErrorWithoutErrorCodes()
+  void handleMethodArgumentNotValidException_returnBadRequestErrorWithoutErrorCodes()
       throws NoSuchMethodException {
     BeanPropertyBindingResult errors =
         new BeanPropertyBindingResult(
@@ -137,13 +137,12 @@ class ExceptionControllerTest {
     val exceptionController = new ExceptionController();
     val response = exceptionController.handleMethodArgumentNotValidException(ex);
     Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-    Assertions.assertEquals(0, response.getBody().getErrors().getError().size());
+    Assertions.assertEquals(0, response.getBody().getErrors().getErrorList().size());
   }
 
   @Test
-  public void
-      handleMethodArgumentNotValidException_returnBadRequestErrorWithEmptyDefaultErrorMessage()
-          throws NoSuchMethodException {
+  void handleMethodArgumentNotValidException_returnBadRequestErrorWithEmptyDefaultErrorMessage()
+      throws NoSuchMethodException {
     BeanPropertyBindingResult errors =
         new BeanPropertyBindingResult(
             BaseError.builder()
@@ -160,11 +159,11 @@ class ExceptionControllerTest {
     val response = exceptionController.handleMethodArgumentNotValidException(ex);
     Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     Assertions.assertEquals(
-        "source - null", response.getBody().getErrors().getError().get(0).getDetails());
+        "source - null", response.getBody().getErrors().getErrorList().get(0).getDetails());
   }
 
   @Test
-  public void handleBadRequestHttpMessageNotReadableException() {
+  void handleBadRequestHttpMessageNotReadableException() {
     val httpMessageNotReadableException =
         new HttpMessageNotReadableException("Could not read JSON: ", new JsonParseException());
     val exceptionController = new ExceptionController();
@@ -173,11 +172,11 @@ class ExceptionControllerTest {
     Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     Assertions.assertEquals(
         "Could not read JSON: ; nested exception is org.springframework.boot.json.JsonParseException: Cannot parse JSON",
-        response.getBody().getErrors().getError().get(0).getDetails());
+        response.getBody().getErrors().getErrorList().get(0).getDetails());
   }
 
   @Test
-  public void handleBadRequestServletRequestBindingException() {
+  void handleBadRequestServletRequestBindingException() {
     val servletRequestBindingException =
         new ServletRequestBindingException("Missing Path Parameter");
     val exceptionController = new ExceptionController();
@@ -185,6 +184,7 @@ class ExceptionControllerTest {
         exceptionController.handleServletRequestBindingException(servletRequestBindingException);
     Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     Assertions.assertEquals(
-        "Missing Path Parameter", response.getBody().getErrors().getError().get(0).getDetails());
+        "Missing Path Parameter",
+        response.getBody().getErrors().getErrorList().get(0).getDetails());
   }
 }

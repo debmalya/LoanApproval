@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class ExceptionController {
 
-  private static final String appName = "LoanApprover";
+  private static final String APP_NAME = "LoanApprover";
 
   /**
    * Handle constraint violation in inputs.
@@ -40,7 +40,7 @@ public class ExceptionController {
     List<BaseError> errors = new ArrayList<>();
     errors.add(
         BaseError.builder()
-            .source(appName)
+            .source(APP_NAME)
             .reasonCode(HttpStatus.BAD_REQUEST.toString())
             .description(HttpStatus.BAD_REQUEST.getReasonPhrase())
             .recoverable(false)
@@ -62,7 +62,7 @@ public class ExceptionController {
     List<BaseError> errors = new ArrayList<>();
     errors.add(
         BaseError.builder()
-            .source(appName)
+            .source(APP_NAME)
             .reasonCode(HttpStatus.INTERNAL_SERVER_ERROR.toString())
             .description(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase())
             .recoverable(false)
@@ -87,7 +87,7 @@ public class ExceptionController {
             err ->
                 errors.add(
                     BaseError.builder()
-                        .source(appName)
+                        .source(APP_NAME)
                         .reasonCode(HttpStatus.BAD_REQUEST.toString())
                         .description(HttpStatus.BAD_REQUEST.getReasonPhrase())
                         .recoverable(false)
@@ -117,7 +117,7 @@ public class ExceptionController {
     List<BaseError> errors = new ArrayList<>();
     errors.add(
         BaseError.builder()
-            .source(appName)
+            .source(APP_NAME)
             .reasonCode(HttpStatus.BAD_REQUEST.toString())
             .description(HttpStatus.BAD_REQUEST.getReasonPhrase())
             .recoverable(false)
@@ -139,7 +139,7 @@ public class ExceptionController {
     List<BaseError> errors = new ArrayList<>();
     errors.add(
         BaseError.builder()
-            .source(appName)
+            .source(APP_NAME)
             .reasonCode(HttpStatus.BAD_REQUEST.toString())
             .description(HttpStatus.BAD_REQUEST.getReasonPhrase())
             .recoverable(false)
@@ -151,6 +151,7 @@ public class ExceptionController {
   private ResponseEntity<ErrorResponse> getErrorResponseEntity(
       List<BaseError> errors, HttpStatus httpStatus) {
     return new ResponseEntity<>(
-        ErrorResponse.builder().errors(Error.builder().error(errors).build()).build(), httpStatus);
+        ErrorResponse.builder().errors(Error.builder().errorList(errors).build()).build(),
+        httpStatus);
   }
 }
