@@ -160,6 +160,8 @@
                 <version>${jacoco-plugin.version}</version>
                 <configuration>
                     <append>true</append>
+                    <excludes>**/org/deb/loan/approver/dto/*</excludes>
+                    <excludes>**/org/deb/loan/approver/model/*</excludes>
                 </configuration>
                 <executions>
                     <execution>
